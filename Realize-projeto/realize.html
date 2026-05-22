@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="realize.css">
+    <title>Realize Consultoria Imobiliária</title>
+</head>
+
+<body>
+  <header class="meu-header">
+    <input type="checkbox" id="gatilho-menu" class="esconde-check">
+
+    <div class="logo-container">
+        <img src="./WhatsApp Image 2026-04-28 at 8.44.36 PM.jpeg" alt="Logo Realize" class="logo-custom">
+    </div>
+
+    <label for="gatilho-menu" class="botao-hamburguer">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <nav class="nav-principal">
+        <div class="links-grupo">
+        <a class="link-header" href="#home">Home</a>
+        <a class="link-header" href="#sobre">Sobre Nós</a>
+        <a class="link-header" href="#servicos">Serviços</a>
+        <a class="link-header" href="#horarios">Horário</a>
+        <a class="link-header" href="#contato">Contato</a>
+</div>
+        <div class="header-right-mobile">
+            <input type="text" placeholder="Buscar imóveis..." class="search-bar">
+            <label for="toggle-perfil" class="btn-abrir-perfil">Meu Perfil</label>
+        </div>
+    </nav>
+
+    <input type="checkbox" id="toggle-perfil" class="checkbox-invisivel">
+    <div class="sidebar-perfil">
+        <label for="toggle-perfil" class="btn-fechar-perfil">✖</label>
+        <div class="perfil-info">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Foto" class="foto-perfil">
+            <h3>Nome do Cliente</h3>
+            <p>cliente@email.com</p>
+        </div>
+        <ul class="perfil-menu">
+            <li><a href="#">🏠 Meus Imóveis Favoritos</a></li>
+            <li><a href="#">⚙️ Editar Perfil</a></li>
+            <li><a href="#" class="btn-sair">Sair</a></li>
+        </ul>
+    </div>
+    <label for="toggle-perfil" class="overlay-escuro"></label>
+</header>
+    <main class="conteudo-principal">
+        <section>
+            <h2 id="home">Bem-vindo à Realize Consultoria Imobiliária!</h2>
+            <p>Estamos aqui para ajudar você a encontrar o imóvel perfeito para suas necessidades. Seja para comprar,
+                vender ou alugar, nossa equipe de especialistas está pronta para oferecer um serviço personalizado e
+                eficiente. Explore nossos serviços e entre em contato conosco para realizar seu sonho imobiliário!</p>
+        </section>
+        <section id="sobre">
+            <h2>Sobre nós</h2>
+            <p> A Realize Consultoria Imobiliária é uma empresa dedicada a ajudar nossos clientes a encontrar o imóvel
+                dos
+                seus sonhos. Com uma equipe de profissionais experientes e comprometidos, oferecemos um serviço
+                personalizado para atender às necessidades e desejos de cada cliente. Nosso objetivo é tornar o processo
+                de
+                compra, venda ou aluguel de imóveis o mais simples e satisfatório possível, garantindo a realização dos
+                sonhos imobiliários de nossos clientes.</p>
+            <p>Trabalhamos com venda, locação e administração de imóveis residenciais e comerciais e somos
+                correspondente do
+                banco Caixa Econômica Federal. Ajudamos você a montar sua aposentadoria através de renda passiva em
+                imóveis.
+            </p>
+        </section>
+        <section id="servicos">
+            <h2>Serviços</h2>
+            <ul>
+                <li>Venda de imóveis</li>
+                <li>Locação de imóveis</li>
+                <li>Administração de imóveis</li>
+                <li>Correspondente Caixa Econômica Federal</li>
+            </ul>
+        </section>
+        <section id="horarios">
+            <h2>Horário de Funcionamento</h2>
+            <table border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th>Abertura</th>
+                        <th>Fechamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>Segunda-feira</td>
+
+                        <td>08:00</td>
+
+                        <td>17:30</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Terça-feira</td>
+
+                        <td>08:00</td>
+
+                        <td>17:30</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Quarta-feira</td>
+
+                        <td>08:00</td>
+
+                        <td>17:30</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Quinta-feira</td>
+
+                        <td>08:00</td>
+
+                        <td>17:30</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Sexta-feira</td>
+
+                        <td>08:00</td>
+
+                        <td>17:30</td>
+
+
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Sábado</td>
+
+                        <td>08:00</td>
+
+                        <td>12:00</td>
+
+                    </tr>
+                    <tr>
+                        <td>Domingo</td>
+                        <td colspan="2">Fechado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <section id="localizacao">
+                <h2>Localização</h2>
+                <p class="footer-text">Estamos localizados em
+                <address>
+                    Avenida Juracy Magalhães, 3340A - MULTIPLACE <br>
+                    2° Andar, Sala 201 - Bairro Felícia <br>
+                    Vitória da Conquista - BA | CEP: 45055-902
+                </address>Venha nos visitar ou entre em contato para saber
+
+                mais sobre nossos serviços e como podemos ajudar você a realizar seu sonho imobiliário!</p>
+            </section>
+
+            <section id="contato">
+    <h2>Entre em contato e fale conosco</h2>
+    
+    <div class="botoes-container">
+        <a class="btn-contato instagram" href="https://www.instagram.com/alisson.lopescorretordeimoveis/" target="_blank" rel="noopener noreferrer">Siga no Instagram</a>
+        
+        <a class="btn-contato facebook" href="https://www.facebook.com/289659788104684/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        
+        <a class="btn-contato site" href="https://www.realizeconsultimobiliaria.com.br/" target="_blank">Explorar e visite nosso Site</a>
+        
+        <a class="btn-contato email" href="mailto:alisson.lopes@gmail.com">Mande um e-mail para Alisson</a>
+        
+        <a class="btn-contato email" href="mailto:Realize.consultoriaimobiliaria@hotmail.com">Mande um e-mail para Realize</a>
+        
+        <a class="btn-contato telefone" href="tel:+557788627604">Telefone</a>
+        
+        <a class="btn-whatsapp" href="https://wa.me/557788627604" target="_blank" rel="noopener noreferrer">Fale conosco no WhatsApp</a>
+    </div>
+</section>
+        </div>
+    </footer>
+</body>
+
+</html>

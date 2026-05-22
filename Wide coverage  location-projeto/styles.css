@@ -1,0 +1,84 @@
+*{
+ font-family: "poppins", sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+header{
+margin: 47px 0 163px 42px;
+}
+
+.link-header{
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+color:#17233D;
+cursor: pointer;
+margin-right: 32px;
+text-align: center;
+letter-spacing: 0.875px;
+}
+
+.button-header{
+background-color: #6FBF44;
+color: #fff;
+border: 1px solid #6FBF44;
+font-size: 16px;
+border-radius: 6px;
+width: 124px;
+height: 52px;
+line-height: 24px;
+font-weight: 500;
+cursor: pointer;
+letter-spacing: 1px;
+}
+
+.logo-image{
+width: 568px;
+height: 500px;
+margin-left: 123px;
+display: inline-block;
+}
+
+section{
+display: inline-block;
+margin-left: 86px;
+}
+
+h1{
+font-weight: 700;
+font-size: 62px;
+line-height: 82px;
+color: #161A49;
+letter-spacing: 0.596154px;
+}
+
+.botao-transparente {
+    background-color: transparent; /* Fundo transparente */
+    color: #6FBF44; /* Cor do texto */
+    border: 2px solid #ffffff; /* Borda para aparecer */
+    padding: 10px 20px; /* Espaçamento interno */
+    text-decoration: none; /* Remove underline do link */
+    border-radius: 5px; /* Cantos arredondados */
+    transition: all 0.3s; /* Efeito suave no hover */
+}
+
+/* Efeito ao passar o mouse */
+.botao-transparente:hover {
+    background-color: #000; /* Preenche ao passar o mouse */
+    color: #fff; /* Muda a cor do texto */
+}
+
+
+p{
+font-weight: 400;
+font-size: 18px;
+line-height: 33px;
+color: #4B505A;
+width: 493px;
+margin-top: 55px;
+margin-bottom: 47px;
+letter-spacing: 0.5px;
+}

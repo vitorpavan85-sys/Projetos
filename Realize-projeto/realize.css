@@ -1,0 +1,980 @@
+/* ========================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul-realize: #0073e6;
+    --azul-claro: #4da3ff;
+    --fundo-escuro: #121212;
+    --fundo-card: #1e1e1e;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--fundo-escuro);
+    color: #e0e0e0;
+}
+
+/* ========================================
+   HEADER PRINCIPAL
+   ======================================== */
+.meu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: #1a1a1a;
+    border-bottom: 2px solid var(--azul-realize);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.nav-principal {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.links-grupo {
+    display: flex;
+    gap: 15px;
+}
+
+/* Estilo rápido para os links não ficarem roxos/azuis */
+.links-grupo a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.links-grupo a:hover {
+    color: #0073e6;
+}
+
+.esconde-check { display: none !important; }
+
+.header-realize {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 80px;
+}
+
+/* Logo com efeito de brilho */
+.logo-container .logo-custom {
+    max-height: 100px;
+    border-radius: 15px;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(0, 115, 230, 0.4);
+    transition: transform 0.3s;
+}
+
+.logo-container .logo-custom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 115, 230, 0.6);
+}
+
+/* Botão hamburguer para mobile */
+#gatilho-menu {
+    display: none; /* Esconde checkbox */
+}
+
+.botao-hamburguer {
+    display: none; /* Escondido por padrão */
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.botao-hamburguer span {
+    width: 35px;
+    height: 4px;
+    background: var(--azul-realize);
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+/* Navegação principal */
+.painel-navegacao {
+    display: flex;
+    gap: 15px;
+    /* Espaço fixo entre os tópicos */
+    flex-wrap: wrap;
+    /* O segredo para não encavalar */
+    justify-content: center;
+    /* Centraliza os links no espaço disponível */
+}
+
+.painel-navegacao a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.painel-navegacao a:hover {
+    color: var(--azul-claro);
+}
+
+/* Bloco de perfil no header */
+.bloco-perfil {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+    /* Impede que essa área seja "esmagada" no zoom */
+}
+
+.search-bar {
+    height: 45px;
+    width: 250px;
+    padding: 0 15px;
+    border-radius: 25px;
+    border: 1px solid #444;
+    background-color: #2d2d2d;
+    color: white;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-bar:focus {
+    border-color: #0073e6;
+}
+
+.btn-login {
+    height: 45px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    border: 2px solid #0073e6;
+    border-radius: 8px;
+    color: #4da3ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #0073e6;
+    color: white;
+}
+
+/* 3. CONTEÚDO PRINCIPAL (SECTIONS) */
+section {
+    border-left: 5px solid var(--azul-realize);
+    background-color: var(--fundo-card);
+    margin: 20px auto;
+    padding: 30px;
+    width: 95%;
+    /* Ocupa 90% da tela... */
+
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+h1,
+h2 {
+    color: #4da3ff;
+    font-size: 1.8rem;
+    /* Tamanho relativo */
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+
+h2 {
+    border-left: 5px solid #0073e6;
+    padding-left: 15px;
+}
+
+/* 4. TABELA DE HORÁRIOS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #333;
+}
+
+th {
+    background-color: #0073e6;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #262626;
+}
+
+/* 5. RODAPÉ E BOTÕES DE CONTATO */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #1a1a1a;
+    border-top: 3px solid #0073e6;
+    margin-top: 50px;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #25d366;
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Ajuste para os links no rodapé */
+footer a {
+    color: #4da3ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+
+}
+
+/* 1. O Container que coloca lado a lado */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    /* Empurra um pra cada lado */
+    align-items: flex-start;
+    /* Alinha pelo topo */
+    gap: 40px;
+    /* Espaço entre as duas partes */
+    max-width: 1200px;
+    /* Largura máxima do footer */
+    margin: 0 auto;
+    /* Centraliza no meio da tela */
+    padding: 40px 20px;
+}
+
+/* 2. Resetando as Sections dentro do Footer */
+footer section {
+    flex: 1;
+    /* Faz as duas ocuparem o mesmo espaço */
+    width: auto;
+    /* Cancela o width: 95% que colocamos antes */
+    max-width: none;
+    /* Cancela o max-width das sections comuns */
+    margin: 0;
+    /* Remove as margens que empurravam pra baixo */
+    background: transparent;
+    /* Remove o fundo cinza se você quiser um footer liso */
+    box-shadow: none;
+    /* Remove a sombra para ficar com cara de rodapé */
+}
+
+/* 3. Ajustando os links de contato */
+#contato ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#contato li {
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+    /* Deixa o visual mais organizado como um site real */
+}
+
+section h2 {
+    color: var(--azul-claro);
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    /* Dá um ar mais corporativo */
+    letter-spacing: 1px;
+}
+
+/* --- O TRUQUE DO CHECKBOX --- */
+.checkbox-invisivel {
+    display: none;
+    /* Esconde a caixinha feia padrão do navegador */
+}
+
+/* --- O BOTÃO DE ABRIR (A Label disfarçada) --- */
+.btn-abrir-perfil {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    border: 2px solid var(--azul-realize);
+    border-radius: 8px;
+    color: var(--azul-claro);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-abrir-perfil:hover {
+    background-color: var(--azul-realize);
+    color: white;
+}
+
+/* ========================================
+   SIDEBAR DE PERFIL
+   ======================================== */
+#toggle-perfil {
+    display: none; /* Checkbox invisível */
+}
+
+.sidebar-perfil {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 320px;
+    height: 100vh;
+    background-color: var(--fundo-card);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    transition: right 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.sidebar-perfil::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-perfil::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.sidebar-perfil::-webkit-scrollbar-thumb {
+    background: var(--azul-realize);
+    border-radius: 10px;
+}
+
+#toggle-perfil:checked ~ .sidebar-perfil {
+    right: 0;
+}
+
+#toggle-perfil:checked ~ .overlay-escuro {
+    display: block;
+}
+
+.overlay-escuro {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1500;
+    cursor: pointer;
+}
+
+.btn-fechar-perfil {
+    align-self: flex-end;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btn-fechar-perfil:hover {
+    color: #ff4d4d;
+}
+
+.perfil-info {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.foto-perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--azul-realize);
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.perfil-info h3 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.perfil-info p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.perfil-menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 30px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-realize) transparent;
+}
+
+.perfil-menu li {
+    margin-bottom: 10px;
+}
+
+.perfil-menu a {
+    color: #e0e0e0;
+    text-decoration: none;
+    display: block;
+    padding: 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.perfil-menu a:hover {
+    background-color: #2d2d2d;
+    color: var(--azul-claro);
+    padding-left: 20px;
+}
+
+.btn-sair {
+    color: #ff4d4d !important;
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+.conteudo-principal {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+section {
+    border-left: 5px solid var(--azul-realize);
+    background-color: var(--fundo-card);
+    margin: 20px auto;
+    padding: 30px;
+    width: 95%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: var(--azul-claro);
+    font-size: 1.8rem;
+    word-wrap: break-word;
+    margin-bottom: 15px;
+}
+
+h2 {
+    border-left: 5px solid var(--azul-realize);
+    padding-left: 15px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Tabela de horários */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #333;
+}
+
+th {
+    background-color: var(--azul-realize);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #262626;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #1a1a1a;
+    border-top: 3px solid var(--azul-realize);
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+footer section {
+    flex: 1;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+#contato ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#contato li {
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: var(--azul-claro);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Botões de contato */
+.botoes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.btn-contato {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: 1px solid #444;
+    color: white;
+    background-color: #2d2d2d;
+}
+
+.btn-contato:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: var(--azul-realize);
+    color: var(--azul-claro);
+}
+
+.btn-contato.instagram:hover {
+    border-color: #e1306c;
+    color: #e1306c;
+}
+
+.btn-contato.facebook:hover {
+    border-color: #4267B2;
+    color: #4267B2;
+}
+
+.btn-contato.email:hover {
+    border-color: #fbbc05;
+    color: #fbbc05;
+}
+
+main,
+.conteudo-principal {
+    padding-bottom: 80px;
+    /* Isso garante que o último conteúdo nunca fique "esmagado" pelo header no final da rolagem */
+}
+
+.conteudo-principal {
+    /* 1. Dá espaço para o conteúdo não começar atrás do header fixo */
+    padding-top: 100px;
+
+    /* 2. Dá o espaço extra no final para o header não cobrir o footer */
+    padding-bottom: 80px;
+
+    /* 3. Garante que o conteúdo fique centralizado e não estique demais */
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+/* --- ESTILO DO ÍCONE HAMBÚRGUER --- */
+.menu-hamburger {
+    display: none; /* Escondido por padrão no PC */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 2100;
+}
+
+.menu-hamburger span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: var(--azul-claro);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* --- LOGICA DE APARECER COM ZOOM OU TELA PEQUENA --- */
+@media (max-width: 900px) or (max-height: 500px) {
+    .menu-hamburger {
+        display: flex; /* Aparece as 3 barras */
+    }
+
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Escondido na esquerda */
+        width: 80%;
+        height: 100vh;
+        background-color: #1a1a1a;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: 0.4s ease;
+        z-index: 2050;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+}
+
+  /* Esconder os checkboxes */
+.checkbox-invisivel { display: none; }
+
+/* --- HEADER ESTILO PC --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: #1a1a1a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--azul-realize);
+}
+
+.nav-principal {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-hamburger {
+    display: none; /* Escondido no PC */
+        flex-direction: column;
+    gap: 5px;
+        cursor: pointer;
+    }
+
+.menu-hamburger span {
+    width: 30px;
+    height: 4px;
+    background: var(--azul-claro);
+    border-radius: 2px;
+}
+
+/* --- QUANDO O ESPAÇO ACABA (ZOOM OU MOBILE) --- */
+@media (max-width: 1024px), (max-height: 500px) {
+    .menu-hamburger {
+        display: flex; /* Aparecem as 3 barras */
+    }
+
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Escondido na esquerda */
+        width: 300px;
+        height: 100vh;
+        background: #111;
+        flex-direction: column;
+        padding: 80px 20px;
+        transition: 0.4s ease;
+        z-index: 999;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.8);
+        align-items: flex-start; /* Alinha os itens na esquerda do menu */
+    }
+
+    /* Abre o menu quando clica no hambúrguer */
+    #menu-check:checked ~ .nav-principal {
+        left: 0;
+    }
+
+    .nav-principal a {
+        width: 100%;
+        padding: 15px 0;
+        border-bottom: 1px solid #333;
+    }
+
+    .header-right-mobile {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+            align-items: center;
+    }
+    }
+/* Quando a tela for pequena (como no seu widget) */
+@media (max-width: 1000px) {
+    header {
+        flex-direction: column;
+        /* Empilha a logo em cima, menu no meio e busca embaixo */
+        gap: 15px;
+        height: auto;
+        /* Deixa o header crescer para baixo */
+        padding: 20px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: center;
+        /* Centraliza a busca e o login */
+    }
+
+
+
+
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        header {
+            padding: 5px 3%;
+            /* Reduz o espaçamento interno */
+    }
+
+        .logo-custom {
+        max-height: 50px;
+            /* Logo menor para sobrar espaço pro site */
+    }
+
+    .btn-abrir-perfil {
+        padding: 0 15px;
+        height: 35px;
+        font-size: 0.8rem;
+        }
+        }
+    }
+}
+
+
+/* Se a altura da tela for menor que 500px (comum em zoom alto ou celular deitado) */
+@media (max-height: 500px) {
+    header {
+        position: relative;
+        /* O header deixa de ser fixo e sobe com o scroll */
+        top: auto;
+    }
+}
+
+@media (max-width: 1100px) {
+    
+    /* 1. Mostra as 3 barras */
+    .botao-hamburguer {
+        display: flex;
+    }
+
+    /* 2. Transforma o menu em uma barra lateral escondida */
+    .painel-navegacao {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Começa fora da tela (esquerda) */
+        width: 300px;
+        height: 100vh;
+        background-color: #111;
+        flex-direction: column; /* Itens um embaixo do outro */
+        padding: 80px 30px;
+        transition: 0.4s ease; /* Efeito de deslizar */
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    /* 3. Ajusta os grupos de links e busca dentro do menu lateral */
+    .links-grupo, .acesso-grupo {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    /* 4. A MÁGICA: Quando clicar (check), o menu desliza para dentro */
+    #gatilho-menu:checked ~ .painel-navegacao {
+        left: 0;
+    }
+}
+
+/* Esconde o quadradinho do checkbox */
+.esconde-check {
+    display: none;
+}
+
+@media (min-width: 1201px) {
+    .botao-hamburguer { display: none; }
+    .painel-navegacao {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    .links-grupo { display: flex; gap: 20px; }
+    .acesso-grupo { display: flex; gap: 15px; align-items: center; }
+}
+
+/* --- MODO ZOOM / JANELA / CELULAR (Onde o erro acontecia) --- */
+@media (max-width: 1200px) {
+    
+    /* Força os links a sumirem para dar lugar às barras */
+    .painel-navegacao {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido na direita para não conflitar com a esquerda */
+        width: 300px;
+        height: 100vh;
+        background: #111;
+        flex-direction: column;
+        padding: 100px 30px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        display: flex;
+        gap: 30px;
+    }
+
+    .botao-hamburguer {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        padding: 10px; /* Área de clique */
+        z-index: 1100;
+    }
+
+    .botao-hamburguer span {
+        width: 30px;
+        height: 4px;
+        background: #0073e6;
+        border-radius: 2px;
+    }
+
+    /* Ação de abrir */
+    #gatilho-menu:checked ~ .painel-navegacao {
+        right: 0;
+    }
+
+    /* Organização interna do menu lateral */
+    .links-grupo, .acesso-grupo {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    /* Estilo dos links no menu lateral */
+    .painel-navegacao a {
+        font-size: 1.1rem;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid #222;
+        padding-bottom: 10px;
+    }
+
+    /* Busca e Perfil dentro do menu */
+    .search-bar { width: 100%; order: 1; }
+    .btn-abrir-perfil { width: 100%; order: 2; text-align: center; }
+}
