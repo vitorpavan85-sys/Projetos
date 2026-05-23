@@ -34,19 +34,20 @@ Acredito que bom código é aquele que é legível, eficiente e resolve problema
 ###
 ![HTML5](https://img.shields.io/badge/HTML5-E34C26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-E começando a aprender:
+<br>
+E começando a aprender:<br>
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 
 ###
  <br>
 <br> 
-Programação não é apenas escrever código - é fazer
-Desenvolvimento de **interfaces modernas e responsivas**
-Criação de **APIs robustas**
-Implementação de **boas práticas** de código e arquitetura  
-Otimização de **performance** e **experiência do usuário**  
-Integração em harmonia perfeita - 
+Programação não é apenas escrever código - é fazer <br>
+Desenvolvimento de **interfaces modernas e responsivas**<br>
+Criação de **APIs robustas**<br>
+Implementação de **boas práticas** de código e arquitetura <br> 
+Otimização de **performance** e **experiência do usuário**  <br>
+Integração em harmonia perfeita - <br>
 é resolver problemas, aprender continuamente e criar valor. Cada projeto é uma oportunidade de crescimento.
 **** — qualidade exige dedicação, e é exatamente isso que quero que você encontrará no meu trabalho.
 
