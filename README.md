@@ -1,4 +1,4 @@
-easy projects
+# Easy-Projects
 
 Bem-vindo ao meu repositório principal! 🚀 Aqui é onde eu guardo, organizo e compartilho todos os meus projetos, desde pequenos experimentos e estudos até aplicações completas.
 
