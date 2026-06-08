@@ -16,6 +16,11 @@
 
 html {
     scroll-behavior: smooth;
+    /* 1. O TRAVESSEIRO: Substitua 100px pela altura aproximada do seu header */
+    scroll-padding-top: 138px;
+
+    /* 2. O BÔNUS: Faz a página deslizar suavemente até a seção, em vez de pular seco */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -23,6 +28,14 @@ body {
     line-height: 1.6;
     background-color: var(--fundo-escuro);
     color: #e0e0e0;
+}
+
+html,
+body {
+    /* Mantenha suas outras configurações aqui... */
+    overflow-x: hidden;
+    /* ESSA É A CHAVE: Proíbe a rolagem horizontal */
+    width: 100%;
 }
 
 /* ========================================
@@ -35,8 +48,12 @@ body {
     padding: 15px 5%;
     background: #1a1a1a;
     border-bottom: 2px solid var(--azul-realize);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    /* OBRIGATÓRIO: Força o header a ir de ponta a ponta */
+    box-sizing: border-box;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
@@ -65,16 +82,22 @@ body {
     color: #0073e6;
 }
 
-.esconde-check { display: none !important; }
+.esconde-check {
+    display: none !important;
+}
 
-.header-realize {
+.meu-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 5%;
     background: #1a1a1a;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    /* OBRIGATÓRIO: Força o header a ir de ponta a ponta */
+    box-sizing: border-box;
     z-index: 1000;
     min-height: 80px;
 }
@@ -96,11 +119,13 @@ body {
 
 /* Botão hamburguer para mobile */
 #gatilho-menu {
-    display: none; /* Esconde checkbox */
+    display: none;
+    /* Esconde checkbox */
 }
 
 .botao-hamburguer {
-    display: none; /* Escondido por padrão */
+    display: none;
+    /* Escondido por padrão */
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
@@ -116,7 +141,7 @@ body {
 }
 
 /* Navegação principal */
-.painel-navegacao {
+.nav-principal {
     display: flex;
     gap: 15px;
     /* Espaço fixo entre os tópicos */
@@ -126,7 +151,7 @@ body {
     /* Centraliza os links no espaço disponível */
 }
 
-.painel-navegacao a {
+.nav-principal a {
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -134,7 +159,7 @@ body {
     transition: color 0.3s;
 }
 
-.painel-navegacao a:hover {
+.nav-principal a:hover {
     color: var(--azul-claro);
 }
 
@@ -371,25 +396,33 @@ section h2 {
    SIDEBAR DE PERFIL
    ======================================== */
 #toggle-perfil {
-    display: none; /* Checkbox invisível */
+    display: none;
+    /* Checkbox invisível */
 }
 
 .sidebar-perfil {
     position: fixed;
     top: 0;
-    right: -350px;
-    width: 320px;
+    right: 0;
+    width: 300px;
+    /* Ou a largura que você já definiu */
     height: 100vh;
-    background-color: var(--fundo-card);
-    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.7);
-    z-index: 2000;
-    padding: 30px 20px;
-    box-sizing: border-box;
-    transition: right 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    background: #111;
+    z-index: 9999;
+    /* Mantém ela na camada de cima */
+
+    /* 1. O SEGREDO: Começa totalmente empurrada para a direita (sumida) */
+    transform: translateX(100%);
+
+    /* 2. Efeito suave para quando ela entrar e sair */
+    transition: transform 0.4s ease-in-out;
+
+    /* Mantenha o restante das suas regras de fonte/padding aqui debaixo */
+}
+
+/* Quando o botão do perfil for clicado, a sidebar desliza para dentro da tela */
+#toggle-perfil:checked~.sidebar-perfil {
+    transform: translateX(0);
 }
 
 .sidebar-perfil::-webkit-scrollbar {
@@ -405,11 +438,11 @@ section h2 {
     border-radius: 10px;
 }
 
-#toggle-perfil:checked ~ .sidebar-perfil {
+#toggle-perfil:checked~.sidebar-perfil {
     right: 0;
 }
 
-#toggle-perfil:checked ~ .overlay-escuro {
+#toggle-perfil:checked~.overlay-escuro {
     display: block;
 }
 
@@ -518,7 +551,8 @@ section {
     box-sizing: border-box;
 }
 
-h1, h2 {
+h1,
+h2 {
     color: var(--azul-claro);
     font-size: 1.8rem;
     word-wrap: break-word;
@@ -556,7 +590,8 @@ table {
     margin-top: 20px;
 }
 
-th, td {
+th,
+td {
     padding: 12px;
     text-align: left;
     border: 1px solid #333;
@@ -687,7 +722,8 @@ main,
 
 /* --- ESTILO DO ÍCONE HAMBÚRGUER --- */
 .menu-hamburger {
-    display: none; /* Escondido por padrão no PC */
+    display: none;
+    /* Escondido por padrão no PC */
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
@@ -703,16 +739,43 @@ main,
     transition: 0.3s;
 }
 
+.esconde-check {
+    display: none !important;
+}
+
+.meu-header {
+    display: flex;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background: #1a1a1a;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    min-height: 80px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Esconde os novos ícones por padrão na tela grande */
+.icone-lupa,
+.icone-usuario {
+    display: none;
+}
+
 /* --- LOGICA DE APARECER COM ZOOM OU TELA PEQUENA --- */
 @media (max-width: 900px) or (max-height: 500px) {
     .menu-hamburger {
-        display: flex; /* Aparece as 3 barras */
+        display: flex;
+        /* Aparece as 3 barras */
     }
 
     .nav-principal {
         position: fixed;
         top: 0;
-        left: -100%; /* Escondido na esquerda */
+        left: -100%;
+        /* Escondido na esquerda */
         width: 80%;
         height: 100vh;
         background-color: #1a1a1a;
@@ -723,134 +786,142 @@ main,
         gap: 30px;
         transition: 0.4s ease;
         z-index: 2050;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-}
-
-  /* Esconder os checkboxes */
-.checkbox-invisivel { display: none; }
-
-/* --- HEADER ESTILO PC --- */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%;
-    background: #1a1a1a;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 2px solid var(--azul-realize);
-}
-
-.nav-principal {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.menu-hamburger {
-    display: none; /* Escondido no PC */
-        flex-direction: column;
-    gap: 5px;
-        cursor: pointer;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
     }
 
-.menu-hamburger span {
-    width: 30px;
-    height: 4px;
-    background: var(--azul-claro);
-    border-radius: 2px;
-}
+    /* Esconder os checkboxes */
+    .checkbox-invisivel {
+        display: none;
+    }
 
-/* --- QUANDO O ESPAÇO ACABA (ZOOM OU MOBILE) --- */
-@media (max-width: 1024px), (max-height: 500px) {
-    .menu-hamburger {
-        display: flex; /* Aparecem as 3 barras */
+    /* --- HEADER ESTILO PC --- */
+    .meu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5%;
+        background: #1a1a1a;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 2px solid var(--azul-realize);
     }
 
     .nav-principal {
-        position: fixed;
-        top: 0;
-        left: -100%; /* Escondido na esquerda */
-        width: 300px;
-        height: 100vh;
-        background: #111;
-        flex-direction: column;
-        padding: 80px 20px;
-        transition: 0.4s ease;
-        z-index: 999;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.8);
-        align-items: flex-start; /* Alinha os itens na esquerda do menu */
-    }
-
-    /* Abre o menu quando clica no hambúrguer */
-    #menu-check:checked ~ .nav-principal {
-        left: 0;
-    }
-
-    .nav-principal a {
-        width: 100%;
-        padding: 15px 0;
-        border-bottom: 1px solid #333;
-    }
-
-    .header-right-mobile {
-        margin-top: 20px;
         display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-            align-items: center;
-    }
-    }
-/* Quando a tela for pequena (como no seu widget) */
-@media (max-width: 1000px) {
-    header {
-        flex-direction: column;
-        /* Empilha a logo em cima, menu no meio e busca embaixo */
-        gap: 15px;
-        height: auto;
-        /* Deixa o header crescer para baixo */
-        padding: 20px;
-    }
-
-    .nav-links {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .header-right {
-        width: 100%;
-        justify-content: center;
-        /* Centraliza a busca e o login */
-    }
-
-
-
-
-}
-
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
         align-items: center;
-        text-align: center;
-
-        header {
-            padding: 5px 3%;
-            /* Reduz o espaçamento interno */
+        gap: 20px;
     }
 
-        .logo-custom {
-        max-height: 50px;
-            /* Logo menor para sobrar espaço pro site */
+    .menu-hamburger {
+        display: none;
+        /* Escondido no PC */
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
     }
 
-    .btn-abrir-perfil {
-        padding: 0 15px;
-        height: 35px;
-        font-size: 0.8rem;
+    .menu-hamburger span {
+        width: 30px;
+        height: 4px;
+        background: var(--azul-claro);
+        border-radius: 2px;
+    }
+
+    /* --- QUANDO O ESPAÇO ACABA (ZOOM OU MOBILE) --- */
+    @media (max-width: 1024px),
+    (max-height: 500px) {
+        .menu-hamburger {
+            display: flex;
+            /* Aparecem as 3 barras */
         }
+
+        .nav-principal {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            /* Escondido na esquerda */
+            width: 300px;
+            height: 100vh;
+            background: #111;
+            flex-direction: column;
+            padding: 80px 20px;
+            transition: 0.4s ease;
+            z-index: 999;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.8);
+            align-items: flex-start;
+            /* Alinha os itens na esquerda do menu */
+        }
+
+        /* Abre o menu quando clica no hambúrguer */
+        #menu-check:checked~.nav-principal {
+            left: 0;
+        }
+
+        .nav-principal a {
+            width: 100%;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .header-right-mobile {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            align-items: center;
+        }
+    }
+
+    /* Quando a tela for pequena (como no seu widget) */
+    @media (max-width: 1000px) {
+        .meu-header {
+            flex-direction: column;
+            /* Empilha a logo em cima, menu no meio e busca embaixo */
+            gap: 15px;
+            height: auto;
+            /* Deixa o header crescer para baixo */
+            padding: 20px;
+        }
+
+        .nav-links {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .header-right {
+            width: 100%;
+            justify-content: center;
+            /* Centraliza a busca e o login */
+        }
+
+
+
+
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            .meu-header {
+                padding: 5px 3%;
+                /* Reduz o espaçamento interno */
+            }
+
+            .logo-custom {
+                max-height: 50px;
+                /* Logo menor para sobrar espaço pro site */
+            }
+
+            .btn-abrir-perfil {
+                padding: 0 15px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
         }
     }
 }
@@ -858,7 +929,7 @@ header {
 
 /* Se a altura da tela for menor que 500px (comum em zoom alto ou celular deitado) */
 @media (max-height: 500px) {
-    header {
+    .meu-header {
         position: relative;
         /* O header deixa de ser fixo e sobe com o scroll */
         top: auto;
@@ -866,35 +937,39 @@ header {
 }
 
 @media (max-width: 1100px) {
-    
+
     /* 1. Mostra as 3 barras */
     .botao-hamburguer {
         display: flex;
     }
 
     /* 2. Transforma o menu em uma barra lateral escondida */
-    .painel-navegacao {
+    .nav-principal {
         position: fixed;
         top: 0;
-        left: -100%; /* Começa fora da tela (esquerda) */
+        left: -100%;
+        /* Começa fora da tela (esquerda) */
         width: 300px;
         height: 100vh;
         background-color: #111;
-        flex-direction: column; /* Itens um embaixo do outro */
+        flex-direction: column;
+        /* Itens um embaixo do outro */
         padding: 80px 30px;
-        transition: 0.4s ease; /* Efeito de deslizar */
-        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        transition: 0.4s ease;
+        /* Efeito de deslizar */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
     }
 
     /* 3. Ajusta os grupos de links e busca dentro do menu lateral */
-    .links-grupo, .acesso-grupo {
+    .links-grupo,
+    .header-right-mobile {
         flex-direction: column;
         width: 100%;
         align-items: flex-start;
     }
 
     /* 4. A MÁGICA: Quando clicar (check), o menu desliza para dentro */
-    #gatilho-menu:checked ~ .painel-navegacao {
+    #gatilho-menu:checked~.nav-principal {
         left: 0;
     }
 }
@@ -904,27 +979,301 @@ header {
     display: none;
 }
 
+/* ========================================== */
+/* ESTILOS DOS BOTÕES FLUTUANTES              */
+/* ========================================== */
+
+/* A seta de Voltar ao Topo */
+.btn-voltar-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #333;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+.btn-voltar-topo:hover {
+    background: #0073e6;
+    /* Fica azul ao passar o mouse */
+}
+
+/* O Ícone de Suporte (Headset) */
+.btn-suporte-flutuante {
+    position: fixed;
+    bottom: 75px;
+    /* Fica logo acima da seta de voltar ao topo */
+    right: 20px;
+    background: #0073e6;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+.btn-suporte-flutuante:active {
+    transform: scale(0.9);
+    /* Efeito de clique */
+}
+
+/* ========================================== */
+/* ESTILOS DA CAIXA DO FORMULÁRIO DE SUPORTE  */
+/* ========================================== */
+
+/* Começa escondida e invisível */
+.modal-suporte {
+    position: fixed;
+    bottom: 135px;
+    /* Abre logo acima do ícone de headset */
+    right: 20px;
+    width: 300px;
+    background: #1a1a1a;
+    /* Cor escura combinando com seu header */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    border: 1px solid #333;
+
+    /* Truque para esconder suavemente */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+/* A Mágica: Quando clicar no headset, a caixa sobe e aparece */
+#toggle-suporte:checked~.modal-suporte {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Estilos internos do Form para ficar organizado */
+.modal-suporte h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #0073e6;
+}
+
+.btn-fechar-suporte {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.btn-fechar-suporte:hover {
+    color: white;
+}
+
+.form-suporte-interno {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-suporte-interno input,
+.form-suporte-interno textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #222;
+    color: white;
+    box-sizing: border-box;
+    /* Impede que quebre a largura */
+}
+
+.btn-enviar-suporte {
+    background: #0073e6;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-enviar-suporte:hover {
+    background: #005bb5;
+}
+
+/* Esconde os ícones do footer no computador */
+.icone-footer {
+    display: none;
+}
+
+/* --- CONFIGURAÇÃO GERAL DO FOOTER --- */
+/* --- CONFIGURAÇÃO GERAL DO FOOTER --- */
+footer {
+    background: #111111;
+    padding: 60px 5% 25px 5%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+}
+
+#localizacao {
+    flex: 1;
+    max-width: 450px;
+}
+
+#contato {
+    flex: 1.2;
+}
+
+/* MODIFICAÇÃO: Transforma o container em uma linha horizontal perfeita para os ícones */
+.botoes-container {
+    display: flex !important;
+    flex-direction: row !important; /* Força os elementos a ficarem lado a lado */
+    flex-wrap: wrap !important;     /* Permite quebra se a tela for muito pequena */
+    justify-content: flex-start !important; /* Alinha no começo da linha */
+    align-items: center !important;
+    gap: 20px !important;           /* Espaço exato e idêntico entre cada ícone */
+    margin-top: 20px;
+}
+
+/* LIMPEZA DOS BOTÕES: Remove os fundos e as larguras que quebravam as linhas */
+.btn-contato,
+.btn-whatsapp {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: auto !important;  /* Impede que o link ocupe a tela toda */
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none;
+}
+
+/* ENCONTRANDO E RETIRANDO A PARTE ESCRITA */
+.btn-contato .texto-btn-footer,
+.btn-whatsapp .texto-btn-footer,
+.btn-contato span:not(.icone-footer),
+.btn-whatsapp span:not(.icone-footer) {
+    display: none !important; /* Apaga os textos e deixa só as imagens dos ícones */
+}
+
+/* AJUSTE DOS ÍCONES PUROS */
+.icone-footer {
+    display: inline-block !important;
+    font-size: 1.8rem !important; /* Tamanho idêntico ao clássico do seu print */
+    transition: transform 0.2s ease;
+}
+
+/* Cores vibrantes permanentes direto nos ícones */
+.instagram .icone-footer { color: #E1306C !important; }
+.facebook .icone-footer { color: #1877F2 !important; }
+.site .icone-footer { color: #0073e6 !important; }
+.email .icone-footer { color: #EA4335 !important; }
+.telefone .icone-footer { color: #34B7F1 !important; }
+.btn-whatsapp .icone-footer { color: #25D366 !important; }
+
+/* Efeito sutil ao passar o mouse por cima */
+.icone-footer:hover {
+    transform: scale(1.15);
+}
+
+/* --- SEÇÃO DOS DIREITOS AUTORAIS & CORAÇÃO (AFASTADOS) --- */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 50px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important; 
+    gap: 20px !important; 
+    color: #7e7e7e;
+    font-size: 0.85rem;
+}
+
+.footer-bottom p {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+}
+
+.coracao-realize {
+    color: #0073e6;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-left: 5px;
+    animation: pulsar-coracao 1.5s infinite ease-in-out;
+}
+
+@keyframes pulsar-coracao {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
 @media (min-width: 1201px) {
-    .botao-hamburguer { display: none; }
-    .painel-navegacao {
+    .botao-hamburguer {
+        display: none;
+    }
+
+    .nav-principal {
         display: flex;
         align-items: center;
         gap: 40px;
         flex-grow: 1;
         justify-content: flex-end;
     }
-    .links-grupo { display: flex; gap: 20px; }
-    .acesso-grupo { display: flex; gap: 15px; align-items: center; }
+
+    .links-grupo {
+        display: flex;
+        gap: 20px;
+    }
+
+    .header-right-mobile {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
 }
 
 /* --- MODO ZOOM / JANELA / CELULAR (Onde o erro acontecia) --- */
 @media (max-width: 1200px) {
-    
+
     /* Força os links a sumirem para dar lugar às barras */
-    .painel-navegacao {
+    .nav-principal {
         position: fixed;
         top: 0;
-        right: -100%; /* Escondido na direita para não conflitar com a esquerda */
+        right: -100%;
+        /* Escondido na direita para não conflitar com a esquerda */
         width: 300px;
         height: 100vh;
         background: #111;
@@ -941,7 +1290,8 @@ header {
         flex-direction: column;
         gap: 6px;
         cursor: pointer;
-        padding: 10px; /* Área de clique */
+        padding: 10px;
+        /* Área de clique */
         z-index: 1100;
     }
 
@@ -953,12 +1303,13 @@ header {
     }
 
     /* Ação de abrir */
-    #gatilho-menu:checked ~ .painel-navegacao {
+    #gatilho-menu:checked~.nav-principal {
         right: 0;
     }
 
     /* Organização interna do menu lateral */
-    .links-grupo, .acesso-grupo {
+    .links-grupo,
+    .header-right-mobile {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -966,7 +1317,7 @@ header {
     }
 
     /* Estilo dos links no menu lateral */
-    .painel-navegacao a {
+    .nav-principal a {
         font-size: 1.1rem;
         color: white;
         text-decoration: none;
@@ -975,6 +1326,670 @@ header {
     }
 
     /* Busca e Perfil dentro do menu */
-    .search-bar { width: 100%; order: 1; }
-    .btn-abrir-perfil { width: 100%; order: 2; text-align: center; }
+    .search-bar {
+        width: 100%;
+        order: 1;
+    }
+
+    .btn-abrir-perfil {
+        width: 100%;
+        order: 2;
+        text-align: center;
+    }
+}
+
+@media (min-width: 1201px) {
+    .botao-hamburguer {
+        display: none;
+    }
+
+    .nav-principal {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-grow: 1;
+        justify-content: space-between;
+        margin-left: 40px;
+    }
+
+    .links-grupo {
+        display: flex;
+        gap: 20px;
+    }
+
+    .header-right-mobile {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+}
+
+/* --- MODO ZOOM / JANELA / CELULAR (Onde o erro acontecia) --- */
+@media (max-width: 1200px) {
+
+    /* Força os links a sumirem para dar lugar às barras */
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        /* Escondido na direita para não conflitar com a esquerda */
+        width: 300px;
+        height: 100vh;
+        background: #111;
+        flex-direction: column;
+        padding: 80px 25px 30px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;
+        display: flex;
+        gap: 30px;
+        overflow-y: auto;
+    }
+
+    .botao-hamburguer {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        padding: 10px;
+        /* Área de clique */
+        z-index: 1100;
+    }
+
+    .botao-hamburguer span {
+        width: 30px;
+        height: 4px;
+        background: #0073e6;
+        border-radius: 2px;
+    }
+
+    /* Ação de abrir */
+    #gatilho-menu:checked~.nav-principal {
+        transform: translateX(0);
+    }
+
+    /* Organização interna do menu lateral */
+    .links-grupo {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .header-right-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* Força os elementos da busca a ocuparem a largura do menu lateral */
+    .search-bar,
+    .btn-abrir-perfil {
+        width: 100%;
+        box-sizing: border-box;
+        /* Garante que o padding não estoure a largura */
+    }
+
+
+
+    /* Estilo dos links no menu lateral */
+    .nav-principal a {
+        font-size: 1.1rem;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid #222;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
+    /* ... mantenha suas regras atuais aqui dentro ... */
+
+    /* Soma com a caixa de texto longa e mostra só a lupa */
+    .search-bar {
+        display: none !important;
+    }
+
+    .icone-lupa {
+        display: block;
+        color: white;
+        font-size: 1.3rem;
+        cursor: pointer;
+        margin-left: 300px;
+    }
+
+    .icone-lupa:hover {
+        color: #0073e6;
+    }
+
+    /* Sumir com o texto "Meu Perfil" e mostra o boneco */
+    .texto-perfil {
+        display: none !important;
+    }
+
+    .icone-usuario {
+        display: block;
+        color: #ffffff;
+        font-size: 1.2rem;
+        border: 2px solid #0073e6;
+        padding: 6px;
+        border-radius: 50%;
+        /* Deixa o ícone redondo */
+        cursor: pointer;
+    }
+
+    .icone-usuario:hover {
+        color: white;
+        display: block;
+        color: #0073e6;
+        font-size: 1.2rem;
+        border: 2px solid #ffffff;
+        padding: 6px;
+        border-radius: 50%;
+        /* Deixa o ícone redondo */
+        cursor: pointer;
+    }
+
+    /* Remove o fundo e bordas do botão antigo para não bugar o ícone novo */
+    .btn-abrir-perfil {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    /* Organiza a ordem de quem aparece no Header quando estiver no celular/zoom */
+    .logo-container {
+        order: 1;
+        /* Fica na ponta esquerda */
+    }
+
+    .header-right-mobile {
+        order: 2;
+        /* Fica no meio, mas empurrado para a direita */
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        /* Espaço entre a Lupa e o Boneco */
+        margin-left: auto;
+        /* Essa é a mágica que empurra eles lá pro canto vazio */
+        margin-right: 25px;
+        /* Dá um respiro antes de encostar nas 3 barras */
+    }
+
+    .botao-hamburguer {
+        order: 3;
+        /* Fica na extrema direita */
+        margin-left: 0;
+    }
+
+    .header-right-mobile {
+        display: flex !important;
+        flex-direction: row !important;
+        /* FORÇA FICAR LADO A LADO */
+        align-items: center !important;
+        /* Centraliza os ícones verticalmente */
+        gap: 18px !important;
+        /* Dá um espaçamento bacana entre a lupa e o boneco */
+
+        /* Mantém o alinhamento que jogou eles pra direita */
+        order: 2 !important;
+        margin-left: auto !important;
+        margin-right: 25px !important;
+    }
+
+    @media (max-width: 1200px) {
+        @media (max-width: 1200px) {
+
+            /* =================================================== */
+            /* 1. CORREÇÃO DO HEADER (SEM EMPURRAR OU SEPARAR)      */
+            /* =================================================== */
+
+            /* Esconde os clones de dentro do menu hambúrguer */
+            .nav-principal .search-bar,
+            .nav-principal .icone-lupa,
+            .nav-principal .btn-perfil,
+            .nav-principal .icone-perfil {
+                display: none !important;
+            }
+
+            /* Trava o contêiner para NÃO esticar na tela inteira */
+            .header-right-mobile {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-end !important;
+                gap: 15px !important;
+                margin-left: auto !important;
+                /* Purra o grupo unido para a direita */
+                margin-right: 15px !important;
+                width: auto !important;
+                /* Impede o buraco no meio */
+                flex: none !important;
+            }
+
+            /* Perfil travado na ponta direita */
+            .header-right-mobile a[href*="perfil"],
+            .header-right-mobile .icone-perfil,
+            .header-right-mobile .btn-perfil {
+                order: 3 !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+
+            /* Lupa no meio */
+            .icone-lupa {
+                display: block !important;
+                cursor: pointer !important;
+                order: 2 !important;
+                font-size: 1.3rem !important;
+            }
+
+            /* Barra de pesquisa expande colada na lupa, para a esquerda */
+            .search-bar {
+                display: block !important;
+                order: 1 !important;
+                width: 0px !important;
+                opacity: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                background: #222 !important;
+                color: white !important;
+                transition: width 0.3s ease, opacity 0.2s ease;
+            }
+
+            /* Quando abrir, ela cresce de forma compacta */
+            .header-right-mobile:hover .search-bar,
+            .header-right-mobile:focus-within .search-bar {
+                width: 140px !important;
+                opacity: 1 !important;
+                padding: 6px 10px !important;
+                border: 1px solid #0073e6 !important;
+                border-radius: 4px !important;
+            }
+
+            /* =================================================== */
+            /* 2. CORREÇÃO DO FOOTER (FILEIRA HORIZONTAL LIMPA)     */
+            /* =================================================== */
+
+            .footer-content {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 40px !important;
+            }
+
+            #contato {
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            /* Esconde os textos longos dos botões */
+            .texto-btn-footer {
+                display: none !important;
+            }
+
+            /* Força os ícones a ficarem em uma linha horizontal centralizada */
+            .botoes-container {
+                display: flex !important;
+                flex-direction: row !important;
+                /* Força horizontalidade */
+                flex-wrap: wrap !important;
+                /* Permite quebrar linha se a tela for mini */
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 20px !important;
+                /* Espaçamento idêntico entre eles */
+                width: 100% !important;
+                max-width: 450px !important;
+                margin: 20px auto 0 auto !important;
+                padding: 0 !important;
+            }
+
+            /* Reseta qualquer comportamento de bloco dos links antigos */
+            .botoes-container a,
+            .btn-whatsapp {
+                display: inline-flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                width: auto !important;
+                height: auto !important;
+            }
+
+            /* Configuração e tamanho dos ícones do rodapé */
+            .icone-footer {
+                display: inline-block !important;
+                font-size: 2.2rem !important;
+                /* Tamanho excelente para o dedo clicar */
+                transition: transform 0.2s ease !important;
+            }
+
+            /* Aplicação das cores oficiais nos ícones */
+            .instagram .icone-footer {
+                color: #E1306C !important;
+            }
+
+            .facebook .icone-footer {
+                color: #1877F2 !important;
+            }
+
+            .site .icone-footer {
+                color: #0073e6 !important;
+            }
+
+            .email .icone-footer {
+                color: #EA4335 !important;
+            }
+
+            .telefone .icone-footer {
+                color: #34B7F1 !important;
+            }
+
+            .btn-whatsapp .icone-footer {
+                color: #25D366 !important;
+            }
+
+            /* Organização da barra de copyright embaixo */
+            .footer-bottom {
+                flex-direction: column !important;
+                gap: 10px !important;
+                text-align: center !important;
+                margin-top: 40px !important;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            /* ... mantenha suas regras de responsividade que já estavam aqui ... */
+
+            /* 1. Esconde as frases longas dos links */
+            .texto-btn-footer {
+                display: none !important;
+            }
+
+            /* 2. Mostra os ícones em tamanho grande */
+            .icone-footer {
+                display: inline-block !important;
+                font-size: 2.2rem;
+                transition: transform 0.2s ease;
+            }
+
+            /* 3. Remove o fundo, borda e espaçamento dos botões antigos para sobrar só o ícone */
+            .btn-contato,
+            .btn-whatsapp {
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* 4. Colore cada ícone com a cor oficial da plataforma */
+            .btn-contato.instagram .icone-footer {
+                color: #E1306C;
+            }
+
+            /* Rosa Insta */
+            .btn-contato.facebook .icone-footer {
+                color: #1877F2;
+            }
+
+            /* Azul Face */
+            .btn-contato.site .icone-footer {
+                color: #0073e6;
+            }
+
+            /* Azul do seu tema */
+            .btn-contato.email .icone-footer {
+                color: #EA4335;
+            }
+
+            /* Vermelho Email */
+            .btn-contato.telefone .icone-footer {
+                color: #34B7F1;
+            }
+
+            /* Azul Claro Telefone */
+            .btn-whatsapp .icone-footer {
+                color: #25D366;
+            }
+
+            /* Verde Whats */
+
+            /* 5. Alinha os ícones lado a lado no celular com um bom espaçamento */
+            .botoes-container {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                gap: 25px !important;
+                justify-content: center !important;
+                /* Centraliza eles na tela */
+            }
+
+            /* Efeito de clique no dedo (opcional, dá um charme) */
+            .btn-contato:active .icone-footer,
+            .btn-whatsapp:active .icone-footer {
+                transform: scale(0.9);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            /* ... mantenha suas configurações do cabeçalho aqui dentro ... */
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 35px;
+            }
+
+            /* Esconde as frases longas para dar lugar aos ícones */
+            .texto-btn-footer {
+                display: none !important;
+            }
+
+            /* Ativa os ícones no mobile */
+            .icone-footer {
+                display: inline-block !important;
+                font-size: 2.2rem;
+            }
+
+            /* Transforma o grid de colunas em uma linha horizontal de ícones centrados */
+            .botoes-container {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 25px !important;
+            }
+
+            /* Aplica as cores das marcas direto nos ícones redondos */
+            .instagram .icone-footer {
+                color: #E1306C;
+            }
+
+            .facebook .icone-footer {
+                color: #1877F2;
+            }
+
+            .site .icone-footer {
+                color: #0073e6;
+            }
+
+            .email .icone-footer {
+                color: #EA4335;
+            }
+
+            .telefone .icone-footer {
+                color: #34B7F1;
+            }
+
+            .btn-whatsapp .icone-footer {
+                color: #25D366;
+            }
+
+            /* Alinha o copyright no centro no celular */
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    }
+}
+@media (max-width: 1200px) {
+
+    /* =================================================== */
+    /* FIX DEFINITIVO DO HEADER: BUSCA ANCORADA À DIREITA  */
+    /* =================================================== */
+
+    /* 1. Remove qualquer clone perdido dentro do menu hambúrguer */
+    .nav-principal .search-bar,
+    .nav-principal .icone-lupa,
+    .nav-principal .btn-perfil,
+    .nav-principal .icone-perfil {
+        display: none !important;
+    }
+
+    /* 2. Prepara o contêiner da direita para segurar a barra de busca */
+    .header-right-mobile {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 20px !important;
+        margin-left: auto !important; /* Empurra o bloco todo para a direita */
+        margin-right: 15px !important;
+        position: relative !important; /* Necessário para ancorar a busca */
+        width: auto !important;
+        flex: none !important;
+    }
+
+    /* 3. Ícones estáticos e na ordem certa */
+    .icone-lupa {
+        order: 1 !important;
+        cursor: pointer !important;
+        font-size: 1.3rem !important;
+        z-index: 5 !important;
+    }
+
+    .btn-perfil, .icone-perfil, .header-right-mobile a[href*="perfil"] {
+        order: 2 !important;
+        display: flex !important;
+        align-items: center !important;
+        z-index: 5 !important;
+    }
+
+    /* 4. A BARRA DE PESQUISA (Âncora absoluta à esquerda da lupa) */
+    .search-bar {
+        display: block !important;
+        position: absolute !important;
+        /* Distância calculada para ficar exatamente ANTES da lupa */
+        right: 75px !important; 
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        
+        /* Começa invisível e com largura zero */
+        width: 0px !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        padding: 0 !important;
+        border: none !important;
+        
+        background: #222 !important;
+        color: white !important;
+        transition: width 0.3s ease, opacity 0.2s ease, visibility 0.2s;
+        z-index: 4 !important;
+    }
+
+    /* 5. A MÁGICA: Quando clica ou passa o mouse no grupo, ela abre para a esquerda */
+    .header-right-mobile:hover .search-bar,
+    .header-right-mobile:focus-within .search-bar {
+        width: 150px !important; /* Tamanho ideal para celular */
+        opacity: 1 !important;
+        visibility: visible !important;
+        padding: 6px 10px !important;
+        border: 1px solid #0073e6 !important;
+        border-radius: 4px !important;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .footer-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 35px !important;
+    }
+
+    #localizacao, #contato {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Mantém o texto visível no mobile */
+    .texto-btn-footer {
+        display: inline-block !important;
+        font-size: 0.85rem !important; /* Diminui sutilmente para caber em telas menores */
+    }
+
+    /* MANTÉM O FORMATO DE DUAS COLUNAS COM ÍCONES NO CELULAR */
+    .botoes-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Segura o formato de grid lateral */
+        gap: 15px 20px !important;
+        max-width: 500px !important;
+        margin: 20px auto 0 auto !important;
+        text-align: left !important;
+    }
+
+    .btn-contato, .btn-whatsapp {
+        justify-content: flex-start !important;
+    }
+
+    .icone-footer {
+        font-size: 1rem !important; /* Ícones integrados sem virar botões gigantes */
+    }
+
+    /* Cores sutis para os ícones pequenos no mobile */
+    .instagram .icone-footer { color: #E1306C !important; }
+    .facebook .icone-footer { color: #1877F2 !important; }
+    .site .icone-footer { color: #0073e6 !important; }
+    .email .icone-footer { color: #EA4335 !important; }
+    .telefone .icone-footer { color: #34B7F1 !important; }
+    .btn-whatsapp .icone-footer { color: #25D366 !important; }
+
+    /* Ajuste da barra inferior no celular */
+    .footer-bottom {
+        flex-direction: column !important; /* Empilha no celular para não esmagar */
+        text-align: center !important;
+        justify-content: center !important;
+        margin-top: 35px !important;
+        gap: 8px !important;
+    }
+}@media (max-width: 1200px) {
+    .footer-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .botoes-container {
+        justify-content: center !important; /* Centraliza a linha horizontal de ícones no celular */
+    }
+
+    .footer-bottom {
+        flex-direction: column !important; /* Evita que o texto encavale na tela pequena */
+        text-align: center !important;
+        gap: 10px !important;
+    }
 }
